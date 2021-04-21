@@ -23,16 +23,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="崔的个人博客">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta name="description" content="考虑到最近可能会经常的用到这个功能，特意记录一下 1.常见的读写操作： 12with open(r&amp;#x27;filename.txt&amp;#x27;) as f:   data_user&#x3D;pd.read_csv(f)  #文件的读操作  12with open(&amp;#x27;data.txt&amp;#x27;, &amp;#x27;w&amp;#x27;) as f:   f.write(&amp;#x27;hello world">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python常用文件读写方法">
+<meta property="og:url" content="http://example.com/2021/04/21/python%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="崔的个人博客">
+<meta property="og:description" content="考虑到最近可能会经常的用到这个功能，特意记录一下 1.常见的读写操作： 12with open(r&amp;#x27;filename.txt&amp;#x27;) as f:   data_user&#x3D;pd.read_csv(f)  #文件的读操作  12with open(&amp;#x27;data.txt&amp;#x27;, &amp;#x27;w&amp;#x27;) as f:   f.write(&amp;#x27;hello world">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-21T06:38:01.000Z">
+<meta property="article:modified_time" content="2021-04-21T12:02:35.554Z">
 <meta property="article:author" content="崔">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/archives/">
+<link rel="canonical" href="http://example.com/2021/04/21/python%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%96%B9%E6%B3%95/">
 
 
 <script class="page-configurations">
@@ -40,11 +45,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
-<title>归档 | 崔的个人博客</title>
+<title>python常用文件读写方法 | 崔的个人博客</title>
   
 
 
@@ -215,229 +220,115 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 10 篇日志。 继续努力。</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/21/python%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/xly.png">
+      <meta itemprop="name" content="崔">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="崔的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python常用文件读写方法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+
+      <time title="创建时间：2021-04-21 14:38:01 / 修改时间：20:02:35" itemprop="dateCreated datePublished" datetime="2021-04-21T14:38:01+08:00">2021-04-21</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>考虑到最近可能会经常的用到这个功能，特意记录一下</p>
+<p>1.<strong>常见的读写操作：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&#x27;filename.txt&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">   data_user=pd.read_csv(f)  <span class="comment">#文件的读操作</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;data.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">   f.write(<span class="string">&#x27;hello world&#x27;</span>)  <span class="comment">#文件的写操作</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>2.<strong>相关参数：</strong></p>
+<p>r:    以只读方式打开文件。文件的指针将会放在文件的开头。这是<strong>默认模式</strong>。</p>
+<p>rb:    以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。这是默认模式。</p>
+<p>r+:    打开一个文件用于读写。文件指针将会放在文件的开头。</p>
+<p>rb+:    以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。</p>
+<p>w:    打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</p>
+<p>wb:    以二进制格式打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</p>
+<p>w+:    打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</p>
+<p>wb+:    以二进制格式打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</p>
+<p>a:    打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</p>
+<p>ab:    以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</p>
+<p>a+:    打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。</p>
+<p>ab+:    以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。</p>
+<p>3.<strong>file对象的属性：</strong></p>
+<p>file.read([size])   将文件数据作为字符串返回，可选参数size控制读取的字节数<br>file.readlines([size])   返回文件中行内容的列表，size参数可选<br>file.write(str)   将字符串写入文件<br>file.writelines(strings)   将字符串序列写入文件<br>file.close()   关闭文件<br>file.closed    表示文件已经被关闭，否则为False</p>
+<p>file.mode    Access文件打开时使用的访问模式<br>file.encoding    文件所使用的编码<br>file.name    文件名<br>file.newlines    未读取到行分隔符时为None，只有一种行分隔符时为一个字符串，当文件有多种类型的行结束符时，则为一个包含所有当前所遇到的行结束的列表<br>file.softspace    为0表示在输出一数据后，要加上一个空格符，1表示不加。这个属性一般程序员用不着，由程序内部使用</p>
+<p>4.with as写法</p>
+<p>在控制块结束时会自动关闭，不需要调用clos()方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;data.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br></pre></td></tr></table></figure>
+
+<p>encoding=’utf-8’指定文本编码为utf-8</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-04-21T14:38:01+08:00"
-              content="2021-04-21">
-          04-21
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/04/21/python%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%96%B9%E6%B3%95/" itemprop="url">
-            <span itemprop="name">python常用文件读写方法</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/19/hexo%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/" rel="prev" title="hexo插入本地图片不显示问题">
+                  <i class="fa fa-chevron-left"></i> hexo插入本地图片不显示问题
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-04-19T11:07:15+08:00"
-              content="2021-04-19">
-          04-19
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/04/19/hexo%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/" itemprop="url">
-            <span itemprop="name">hexo插入本地图片不显示问题</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-03-24T22:40:01+08:00"
-              content="2021-03-24">
-          03-24
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/24/%E5%8A%B3%E6%8B%89/" itemprop="url">
-            <span itemprop="name">劳拉</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-03-20T22:15:52+08:00"
-              content="2021-03-20">
-          03-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/20/%E4%BC%8A%E5%90%B9/" itemprop="url">
-            <span itemprop="name">伊吹</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-03-12T22:36:21+08:00"
-              content="2021-03-12">
-          03-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/12/RAMLETHAL/" itemprop="url">
-            <span itemprop="name">RAMLETHAL</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-03-10T21:09:45+08:00"
-              content="2021-03-10">
-          03-10
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/10/%E9%92%A2%E9%93%81%E4%BE%A0/" itemprop="url">
-            <span itemprop="name">钢铁侠</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-03-09T23:18:57+08:00"
-              content="2021-03-09">
-          03-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/09/NAOTO-KUROGANE/" itemprop="url">
-            <span itemprop="name">NAOTO-KUROGANE\</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-03-08T23:11:15+08:00"
-              content="2021-03-08">
-          03-08
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/08/KOKONOE/" itemprop="url">
-            <span itemprop="name">KOKONOE</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-03-06T21:31:58+08:00"
-              content="2021-03-06">
-          03-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/06/%E7%88%B5%E5%A3%AB%E7%BA%BF%E7%A8%BF/" itemprop="url">
-            <span itemprop="name">爵士线稿</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-03-05T22:01:06+08:00"
-              content="2021-03-05">
-          03-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/05/%E5%B0%8F%E5%B0%8F%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B/" itemprop="url">
-            <span itemprop="name">小小测试一下</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
 
 
 <script>
