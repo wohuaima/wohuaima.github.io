@@ -23,16 +23,20 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="崔的个人博客">
-<meta property="og:url" content="http://example.com/archives/2021/06/index.html">
+<meta name="description" content="VirtualBox 异常退出问题检查1.半虚拟化接口：在虚拟机的设置中有个“半虚拟化接口(Paravirtualization providers)”的选项。 研究了一下帮助文件，得到了一个很有用的信息。简单来说，如果宿主机是 Linux，虚拟机是 Windows，那么此选项应选择“Hyper-V”； 反之，如果宿主机是 Windows，虚拟机是 Linux，那么应选择“KVM”。正确的半虚拟化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VirtualBox异常退出排查">
+<meta property="og:url" content="http://example.com/2021/10/21/VirtualBox%E5%BC%82%E5%B8%B8%E9%80%80%E5%87%BA%E6%8E%92%E6%9F%A5/index.html">
 <meta property="og:site_name" content="崔的个人博客">
+<meta property="og:description" content="VirtualBox 异常退出问题检查1.半虚拟化接口：在虚拟机的设置中有个“半虚拟化接口(Paravirtualization providers)”的选项。 研究了一下帮助文件，得到了一个很有用的信息。简单来说，如果宿主机是 Linux，虚拟机是 Windows，那么此选项应选择“Hyper-V”； 反之，如果宿主机是 Windows，虚拟机是 Linux，那么应选择“KVM”。正确的半虚拟化">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-20T16:35:51.000Z">
+<meta property="article:modified_time" content="2021-10-20T16:44:18.079Z">
 <meta property="article:author" content="崔">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/archives/2021/06/">
+<link rel="canonical" href="http://example.com/2021/10/21/VirtualBox%E5%BC%82%E5%B8%B8%E9%80%80%E5%87%BA%E6%8E%92%E6%9F%A5/">
 
 
 <script class="page-configurations">
@@ -40,11 +44,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
-<title>归档 | 崔的个人博客</title>
+<title>VirtualBox异常退出排查 | 崔的个人博客</title>
   
 
 
@@ -139,7 +143,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -152,6 +156,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#VirtualBox-%E5%BC%82%E5%B8%B8%E9%80%80%E5%87%BA%E9%97%AE%E9%A2%98%E6%A3%80%E6%9F%A5"><span class="nav-number">1.</span> <span class="nav-text">VirtualBox 异常退出问题检查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0"><span class="nav-number">1.1.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81uxtheme-dll"><span class="nav-number">1.2.</span> <span class="nav-text">验证uxtheme.dll</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%89%88uxtheme-dll%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80"><span class="nav-number">1.3.</span> <span class="nav-text">原版uxtheme.dll下载地址</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -215,69 +220,92 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 16 篇日志。 继续努力。</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/21/VirtualBox%E5%BC%82%E5%B8%B8%E9%80%80%E5%87%BA%E6%8E%92%E6%9F%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/xly.png">
+      <meta itemprop="name" content="崔">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="崔的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VirtualBox异常退出排查
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+
+      <time title="创建时间：2021-10-21 00:35:51 / 修改时间：00:44:18" itemprop="dateCreated datePublished" datetime="2021-10-21T00:35:51+08:00">2021-10-21</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="VirtualBox-异常退出问题检查"><a href="#VirtualBox-异常退出问题检查" class="headerlink" title="VirtualBox 异常退出问题检查"></a>VirtualBox 异常退出问题检查</h2><p>1.半虚拟化接口：在虚拟机的设置中有个“半虚拟化接口(Paravirtualization providers)”的选项。</p>
+<p>研究了一下帮助文件，得到了一个很有用的信息。简单来说，如果宿主机是 Linux，虚拟机是 Windows，那么此选项应选择“Hyper-V”；</p>
+<p>反之，如果宿主机是 Windows，虚拟机是 Linux，那么应选择“KVM”。正确的半虚拟化接口可以帮助虚拟机更高效准确的运行软件。</p>
+<p>2.在排查日志时候，发现有这么一段错误内容</p>
+<p>supR3HardenedErrorV: supR3HardenedMonitor_LdrLoadDll: rejecting ‘C:\Windows\system32\uxtheme.dll’ (C:\Windows\system32\uxtheme.dll):</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">因为大多人使用的ghost系统都会破解uxtheme.dll文件 导致virtualbox启动失败</span><br></pre></td></tr></table></figure>
+
+<h3 id="验证uxtheme-dll"><a href="#验证uxtheme-dll" class="headerlink" title="验证uxtheme.dll"></a>验证uxtheme.dll</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">下载microsoft的sigcheck工具</span><br><span class="line">http:&#x2F;&#x2F;technet.microsoft.com&#x2F;en-us&#x2F;sysinternals&#x2F;bb897441.aspx</span><br><span class="line"></span><br><span class="line">运行命令</span><br><span class="line">sigcheck -i -a -h c:\windows\system32\uxtheme.dll</span><br><span class="line"></span><br><span class="line">显示结果第一行是 Verified:Unigned 说明是破解的</span><br><span class="line">显示结果第一行是 Verified:Signed 说明是原版的</span><br><span class="line"></span><br><span class="line">使用原版的uxtheme.dll替换c:\windows\system32\uxtheme.dll即可正常使用virtualbox</span><br></pre></td></tr></table></figure>
+
+<h3 id="原版uxtheme-dll下载地址"><a href="#原版uxtheme-dll下载地址" class="headerlink" title="原版uxtheme.dll下载地址"></a>原版uxtheme.dll下载地址</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Windows7 64位</span><br><span class="line">http:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1gdgTE63</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">下载后使用uxtheme.dll替换c:\windows\system32\uxtheme.dll即可正常使用virtua</span><br></pre></td></tr></table></figure>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-06-09T06:24:33+08:00"
-              content="2021-06-09">
-          06-09
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/06/09/download/" itemprop="url">
-            <span itemprop="name">download</span>
-          </a>
-      </div>
+    <footer class="post-footer">
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/06/09/download/" rel="prev" title="download">
+                  <i class="fa fa-chevron-left"></i> download
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-06-06T19:57:42+08:00"
-              content="2021-06-06">
-          06-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/06/06/MYSQL%E5%B8%B8%E8%A7%81%E9%93%BE%E6%8E%A5%E9%94%99%E8%AF%AF1130%EF%BC%8C1045/" itemprop="url">
-            <span itemprop="name">MYSQL常见链接错误1130，1045</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
 
 
 <script>
